@@ -1,0 +1,39 @@
+$color-dark1: #353535;
+$color-dark2: #2a2a2a;
+$color-offwhite1: #f6f6f6;
+$color-offwhite2: #fcfcfc;
+$color-graylight: #c7c7c7;
+$color-green: #26d176;
+$color-brown: #b71c1c;
+$color-brown1: #503f3f;
+$color-white: #ffff;
+$color-grey1: #797979;
+$color-grey2: #ddd;
+$color-grey3: #898989;
+$color-grey4: #9e9e9e;
+$color-lightpurple: #987b7b;
+$color-black: #000;
+$color-yellow: #ffb625;
+$color-blue1: #2d88ff;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+    (
+        "dark1": $color-dark1,
+        "dark2": $color-dark2,
+        "offwhite1": $color-offwhite1,
+        "offwhite2": $color-offwhite2,
+        "green": $color-green,
+        "brown": $color-brown,
+        "brown1": $color-brown1,
+        "grey1": $color-grey1,
+        "grey4": $color-grey4,
+        "lightpurple": $color-lightpurple,
+    ),
+    $theme-colors
+);
+
+// font family
+
+$play-family: "Playfair Display", serif;
+$roboto-family: "Roboto", sans-serif;

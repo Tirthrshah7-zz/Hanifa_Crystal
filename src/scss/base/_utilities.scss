@@ -1,0 +1,70 @@
+.container-lg {
+    @include respondMin(xxlf) {
+        max-width: 1400px;
+    }
+    @include respondMin(xwhd) {
+        max-width: 1640px;
+    }
+}
+
+// radius map
+
+$border-radius: () !default;
+$border-radius: map-merge(
+    (
+        "10": 10,
+        "17": 17,
+        "20": 20,
+        "33": 33,
+    ),
+    $border-radius
+);
+
+@each $radius, $value in $border-radius {
+    @include border-radius(".bd-rd-#{$radius}", $value + px);
+}
+
+.hc_rating {
+    margin: 0.75rem 0rem; //12px 0
+    & .fill-star {
+        color: $color-yellow;
+    }
+    & .star {
+        color: $color-grey1;
+    }
+    & .rating-count {
+        color: $color-grey4;
+    }
+}
+.hc_stickynote {
+    font-size: 1.125rem; //18px;
+    background-color: $color-blue1;
+    color: $color-white;
+    border-radius: 0 0 6px 6px;
+    padding: 0.5rem 1.65rem; //8px 26px
+    @include position($positions: absolute, $left: 40px, $top: 0) {
+        z-index: 1;
+    }
+}
+
+.hc_links {
+    z-index: 1;
+    @include position($positions: absolute, $right: 0);
+    & > .hc_link-btn {
+        width: 41px;
+        font-size: 1.29rem;
+        height: 41px;
+    }
+}
+
+.box-shadow {
+    &-light {
+        box-shadow: 0 10px 20px rgba($color: $color-black, $alpha: 0.1);
+    }
+}
+
+// spacing
+
+.section-padd {
+    padding: 2.813rem 0; //45px
+}

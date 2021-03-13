@@ -1,0 +1,51 @@
+.hc_smallcategory {
+    .hc-jewellery_category-sm {
+        .hc-jewellery {
+            font-family: $play-family;
+            & .hc_img {
+                width: 7.5rem; //120px
+            }
+        }
+    }
+}
+
+.hc_largecategory {
+    @include psesudo($loc: "::before", $content: "", $positions: absolute, $top: 0, $right: 0, $left: 0) {
+        background-color: $color-brown1;
+        z-index: -1;
+        height: 50%;
+    }
+    & .hc_jewellery-large {
+        background-color: $color-white;
+        @extend .box-shadow-light;
+        @extend .bd-rd-20;
+        & .divider {
+            @include psesudo($positions: relative, $loc: "::before", $content: "|") {
+                padding: 0 0.5rem;
+            }
+        }
+        & .hc_links {
+            opacity: 0;
+            @include transition(opacity, 0.5s);
+        }
+        & .hc_jewellery {
+            overflow: hidden;
+            max-width: 300px;
+            margin: auto !important;
+            & .hc-img {
+                transition: transform 0.4s ease-in-out;
+            }
+        }
+        & .hc_content {
+            padding: 1.875rem; //30px
+        }
+        @include psesudo($loc: ":hover") {
+            & .hc_links {
+                opacity: 1;
+            }
+            & .hc-img {
+                transform: scale(1.2);
+            }
+        }
+    }
+}

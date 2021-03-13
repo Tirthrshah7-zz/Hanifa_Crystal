@@ -1,0 +1,19 @@
+html {
+    font-size: 0.875rem; //14px
+    @include respondMin(sm) {
+        font-size: 0.9rem; //14.4px
+    }
+    @include respondMin(xwhd) {
+        font-size: 1rem; //16px
+    }
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: normal;
+    font-weight: 400;
+    color: $color-dark1;
+    font-family: $roboto-family;
+
+    line-height: normal;
+}

@@ -1,0 +1,31 @@
+.category-drop {
+    max-height: 36.875rem;
+    & .dropdown-item {
+        font-size: 1.125rem;
+        color: $color-lightpurple;
+        padding: 0.6rem 1rem;
+        & .necklace-img {
+            filter: contrast(0.5) saturate(1);
+        }
+        &:hover {
+            & .necklace-img {
+                filter: contrast(1) saturate(1);
+            }
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 16px;
+    }
+    &::-webkit-scrollbar-track {
+        background: $color-offwhite2;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color-grey2;
+        border: 5px solid #efefef;
+        border-radius: 15px;
+    }
+    @include respondMax(md) {
+        @include position($positions: fixed, $left: 0, $top: 0);
+        max-width: max-content;
+    }
+}

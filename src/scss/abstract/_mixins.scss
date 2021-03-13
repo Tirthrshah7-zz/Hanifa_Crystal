@@ -1,0 +1,184 @@
+// MEDIA QUERY MANAGER
+
+/*
+0px - 360px:		XS Phone
+360px - 576px: 		Phone
+576px - 768px: 		Tablet Portrait
+768px - 992px:		Tablet Landscape
+992px - 1200px: 	desktop
+1200px - 1920px:	normal Media queries
+1920px and up:  	Full HD
+
+
+// 1em = 16px
+
+	 359   =  	22.438em	
+	 576   =  	36em
+	 768   =	48em
+	 992   =	62em
+	 1200  =	75em
+	 1366  =	85.375em
+	 1400  =	87.5em
+	 1537  =	96.063em
+	 1560  =	97.5em
+	 1600  =	100em
+	 1680  =	105em
+	 1920  =	120em
+*/
+
+// A map of breakpoints.
+$breakpoints: (
+	xs: 22.4375,
+	sm: 36,
+	md: 48,
+	lg: 62,
+	xl: 75,
+	xhd: 85.375,
+	xlhd: 87.5,
+	xxl: 96.063,
+	xxlf: 97.5,
+	xfhd: 100,
+	xwhd: 106.25,
+	xxlhd: 120,
+);
+
+//
+//  RESPOND ABOVE
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-above(sm) {}
+@mixin respondMin($breakpoint) {
+	// If the breakpoint exists in the map.
+	@if map-has-key($breakpoints, $breakpoint) {
+		// Get the breakpoint value.
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+
+		// Write the media query.
+		@media (min-width: $breakpoint-value+"em") {
+			@content;
+		}
+
+		// If the breakpoint doesn't exist in the map.
+	} @else {
+		// Log a warning.
+		@warn 'Invalid breakpoint: #{$breakpoint}.';
+	}
+}
+
+//
+//  RESPOND BELOW
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-below(sm) {}
+@mixin respondMax($breakpoint) {
+	// If the breakpoint exists in the map.
+	@if map-has-key($breakpoints, $breakpoint) {
+		// Get the breakpoint value.
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		// Write the media query.
+		@media (max-width: ($breakpoint-value - 0.02+"em")) {
+			@content;
+		}
+		// If the breakpoint doesn't exist in the map.
+	} @else {
+		// Log a warning.
+		@warn 'Invalid breakpoint: #{$breakpoint}.';
+	}
+}
+
+//
+//  RESPOND BETWEEN
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-between(sm, md) {}
+@mixin respondBetween($lower, $upper) {
+	// If both the lower and upper breakpoints exist in the map.
+	@if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+		// Get the lower and upper breakpoints.
+		$lower-breakpoint: map-get($breakpoints, $lower);
+		$upper-breakpoint: map-get($breakpoints, $upper);
+
+		// Write the media query.
+		@media (min-width: $lower-breakpoint+"em") and (max-width: ($upper-breakpoint - 0.02+"em")) {
+			@content;
+		}
+
+		// If one or both of the breakpoints don't exist.
+	} @else {
+		// If lower breakpoint is invalid.
+		@if (map-has-key($breakpoints, $lower) == false) {
+			// Log a warning.
+			@warn 'Your lower breakpoint was invalid: #{$lower}.';
+		}
+
+		// If upper breakpoint is invalid.
+		@if (map-has-key($breakpoints, $upper) == false) {
+			// Log a warning.
+			@warn 'Your upper breakpoint was invalid: #{$upper}.';
+		}
+	}
+}
+
+@mixin font-weight($weight, $font-weight) {
+	#{$weight} {
+		font-weight: $font-weight;
+	}
+}
+
+@mixin font-size($size, $font-size) {
+	#{$size} {
+		font-size: $font-size;
+	}
+}
+
+@mixin bg-variant($parent, $color) {
+	#{$parent} {
+		background-color: $color !important;
+	}
+}
+
+@mixin text-emphasis-variant($parent, $color, $ignore-warning: false) {
+	#{$parent} {
+		color: $color !important;
+	}
+}
+
+@mixin border-radius($rd, $radius) {
+	#{$rd} {
+		border-radius: $radius;
+	}
+}
+
+@mixin position($positions, $bottom: null, $right: null, $left: null, $top: null) {
+	position: $positions;
+	@include direction($bottom: $bottom, $right: $right, $left: $left, $top: $top) {
+		@content;
+	}
+}
+
+@mixin direction($bottom: null, $right: null, $left: null, $top: null) {
+	bottom: $bottom;
+	right: $right;
+	left: $left;
+	top: $top;
+	@content;
+}
+
+@mixin psesudo($loc: null, $content: null, $positions: null, $bottom: null, $right: null, $left: null, $top: null) {
+	&#{$loc} {
+		content: $content;
+		@include position($positions: $positions, $bottom: $bottom, $right: $right, $left: $left, $top: $top) {
+			@content;
+		}
+	}
+}
+
+@mixin transition($property-name: null, $transition: 0.3s, $ease: ease-in-out) {
+	transition: $property-name $transition $ease;
+}
+
+// @mixin d-flex($flex: flex, $justify: null, $align: null) {
+// 	display: $flex;
+// 	justify-content: $justify;
+// 	align-items: $align;
+// }

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+$font-size: () !default;
+$font-size: map-merge(
+  (
+    "14": 0.875rem,
+    "17": 1.0625rem,
+    "18": 1.125rem,
+    "20": 1.25rem,
+    "24": 1.5rem,
+    "32": 2rem,
+    "60": 3.75rem,
+  ),
+  $font-size
+);
+
+$font-weight: () !default;
+$font-weight: map-merge(
+  (
+    "300": 300,
+    "400": 400,
+    "500": 500,
+    "600": 600,
+    "700": 700,
+    "900": 900,
+  ),
+  $font-weight
+);
+
+@each $fw-weight, $value in $font-weight {
+  @include font-weight(".fw-#{$fw-weight}", $value);
+}
+
+@each $fz-size, $value in $font-size {
+  @include font-size(".fz-#{$fz-size}", $value);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: $play-family;
+}
+
+h1,
+.h1 {
+  font-size: 3.75rem; //60px
+}
+h3,
+.h3 {
+  font-size: 1.5rem; //24px
+}
+p,
+.p {
+  line-height: 1.4;
+  font-size: 1.125rem; //18px
+}
+
+.hc_caption {
+  @extend .p;
+}

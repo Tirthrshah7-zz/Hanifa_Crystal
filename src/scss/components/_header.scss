@@ -1,0 +1,131 @@
+.header-middle {
+    padding: 1.5rem 0;
+    .headphone-img {
+        @include respondMax(md) {
+            width: 30px;
+        }
+    }
+}
+
+.header-bottom {
+    & .menu {
+        & .nav-link {
+            padding: 1.375rem 1.5rem;
+            @include position(relative);
+            @include respondMax(xwhd) {
+                padding: 1.375rem 1.15rem;
+            }
+            @include respondMax(xlhd) {
+                padding: 1.375rem 0.75rem;
+            }
+        }
+    }
+
+    & .menu-left {
+        // flex: 1 1 26%;
+        max-width: 373px;
+        .nav-link {
+            @extend .nav-link;
+        }
+    }
+
+    & .menu-right {
+        // flex: 1 1 74%;
+
+        .nav-link {
+            display: flex;
+            justify-content: center;
+
+            &.active,
+            &:hover {
+                transition: all 0.5s ease-in-out;
+                @include respondMin(xl) {
+                    &::after {
+                        content: "";
+                        @include position($positions: absolute, $bottom: 0);
+                        border-left: 20px solid transparent;
+                        border-right: 20px solid transparent;
+                        border-bottom: 8px solid $color-white;
+                    }
+                }
+            }
+        }
+        .nav-route {
+            @include respondMax(xl) {
+                @include position(fixed, $right: 0, $top: 0);
+                background-color: $color-dark1;
+                width: 280px;
+                z-index: 3;
+            }
+        }
+    }
+}
+
+.input-search {
+    .form-control {
+        border-radius: 10px;
+        padding: 1rem;
+        padding-left: 2.5rem;
+        border: 1px solid rgba($color: $color-graylight, $alpha: 0.37);
+    }
+
+    i {
+        z-index: 5;
+    }
+}
+
+.cart {
+    z-index: 1;
+
+    &::after {
+        transition: all 0.3s ease-in-out;
+        background-color: $color-white;
+        position: absolute;
+        content: "";
+        padding: 1.25rem;
+        z-index: -1;
+        border-radius: 50%;
+    }
+
+    &:hover {
+        &::after {
+            padding: 1.5rem;
+        }
+
+        & i {
+            color: $color-brown;
+        }
+    }
+
+    .cart-total {
+        right: -14px;
+        top: -10px;
+        font-size: 0.935rem;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $color-white;
+    }
+}
+
+.login-regmenu {
+    position: relative;
+    z-index: 1;
+
+    &::after {
+        transition: all 0.3s ease-in-out;
+        background: #fff;
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        padding: 1.25rem 1.35rem;
+        z-index: -1;
+        border-radius: 1.5rem;
+    }
+
+    &:hover {
+        &::after {
+            padding: 1.45rem 1.35rem;
+        }
+    }
+}
