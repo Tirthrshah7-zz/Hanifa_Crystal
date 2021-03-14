@@ -10,12 +10,15 @@
 }
 
 .hc_largecategory {
-    @include psesudo($loc: "::before", $content: "", $positions: absolute, $top: 0, $right: 0, $left: 0) {
-        background-color: $color-brown1;
-        z-index: -1;
-        height: 50%;
+    &.alter_bg {
+        @include psesudo($loc: "::before", $content: "", $positions: absolute, $top: 0, $right: 0, $left: 0) {
+            background-color: $color-brown1;
+            z-index: -1;
+            height: 50%;
+        }
     }
     & .hc_jewellery-large {
+        overflow: auto;
         background-color: $color-white;
         @extend .box-shadow-light;
         @extend .bd-rd-20;
@@ -45,6 +48,92 @@
             }
             & .hc-img {
                 transform: scale(1.2);
+            }
+        }
+    }
+    &.hc_largecategory-outline {
+        & .hc_jewellery-large {
+            box-shadow: none;
+            border: 1px solid $color-graylight;
+            @include psesudo($loc: ":hover") {
+                border-color: $color-graylight1;
+                box-shadow: 0 0px 20px rgba($color: $color-black, $alpha: 0.05);
+            }
+        }
+    }
+}
+
+.hc_artical {
+    & .hc_artical_box {
+        border: 5px solid transparent;
+        padding: 1rem 3rem;
+        @include transition;
+        & .hc-title {
+            font-size: 1.375rem;
+        }
+        @include psesudo($loc: ":hover") {
+            border-color: $color-brown;
+        }
+    }
+}
+
+.hc_feature_product {
+    & .hc_feature {
+        padding: 3.75rem 1rem; //60px 16px
+        background: url("../../images/feature_product.png") no-repeat;
+        background-size: cover;
+        & .hc_large_title {
+            font-size: 3.125rem; //50px
+            & .hc_info {
+                font-size: 1.625rem; //26px
+            }
+        }
+    }
+}
+
+.hc_shop {
+    & .hc_shop-category {
+        @include psesudo($loc: ":hover") {
+            .h5 {
+                color: $color-brown;
+            }
+        }
+    }
+}
+
+.hc_healing {
+    p {
+        margin-bottom: 1.875rem; //30px
+    }
+}
+
+.hc_smallartical {
+    & .hc_sm-artical {
+        padding: 1.5rem; //24px
+        @extend .relative;
+        @include transition;
+        @include psesudo($loc: "::after", $positions: absolute, $content: "", $right: 0, $top: 0) {
+            @include transition(transform);
+            width: 100%;
+            max-width: 226px;
+            border: 5px solid $color-brown;
+            height: 100%;
+            pointer-events: none;
+            transform: translateX(0);
+        }
+        & .hc_box {
+            padding: 1rem;
+            .h2,
+            .h3 {
+                @extend .roboto-font;
+            }
+        }
+        @include psesudo($loc: ":hover") {
+            & .hc-btn-sm_large {
+                background-color: $color-dark3 !important;
+            }
+            @include psesudo($loc: "::after") {
+                transform: translateX(-90%);
             }
         }
     }

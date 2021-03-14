@@ -21,7 +21,7 @@ $border-radius: map-merge(
 );
 
 @each $radius, $value in $border-radius {
-    @include border-radius(".bd-rd-#{$radius}", $value + px);
+    @include border-radius(".bd-rd-#{$radius}", $value + px !important);
 }
 
 .hc_rating {
@@ -57,6 +57,17 @@ $border-radius: map-merge(
     }
 }
 
+.hc_title_Tabs {
+    position: relative;
+    padding-bottom: 1rem;
+    margin: 0;
+    @include psesudo($loc: "::after", $content: "", $positions: absolute, $left: -100%, $right: 0, $bottom: 0) {
+        background-color: $color-brown;
+        height: 6px;
+        display: block;
+    }
+}
+
 .box-shadow {
     &-light {
         box-shadow: 0 10px 20px rgba($color: $color-black, $alpha: 0.1);
@@ -64,7 +75,23 @@ $border-radius: map-merge(
 }
 
 // spacing
-
 .section-padd {
     padding: 2.813rem 0; //45px
+    &-lg {
+        padding: 5.25rem 0; //84px
+    }
+}
+
+.hc-titleline {
+    background-color: $color-brown;
+    height: 6px;
+    margin: 1.5rem auto;
+    width: 55px;
+    &.hc-large {
+        width: 101px;
+    }
+}
+
+.relative {
+    position: relative;
 }

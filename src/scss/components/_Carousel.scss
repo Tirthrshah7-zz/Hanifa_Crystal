@@ -68,3 +68,12 @@
         }
     }
 }
+
+.swiper-container {
+    & .swiper-wrapper {
+        box-sizing: border-box;
+        & .swiper-slide {
+            width: auto;
+        }
+    }
+}

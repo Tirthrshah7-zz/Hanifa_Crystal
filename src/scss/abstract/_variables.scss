@@ -1,8 +1,12 @@
 $color-dark1: #353535;
 $color-dark2: #2a2a2a;
+$color-dark3: #272727;
 $color-offwhite1: #f6f6f6;
 $color-offwhite2: #fcfcfc;
+$color-offwhite3: #f5f6f8;
+$color-offwhite4: #f5f5f5;
 $color-graylight: #c7c7c7;
+$color-graylight1: #ebebeb;
 $color-green: #26d176;
 $color-brown: #b71c1c;
 $color-brown1: #503f3f;
@@ -15,6 +19,9 @@ $color-lightpurple: #987b7b;
 $color-black: #000;
 $color-yellow: #ffb625;
 $color-blue1: #2d88ff;
+$color-sand: #bca27d;
+$color-sand1: #756332;
+$color-lightbrown: #eb8888;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(
@@ -23,12 +30,17 @@ $theme-colors: map-merge(
         "dark2": $color-dark2,
         "offwhite1": $color-offwhite1,
         "offwhite2": $color-offwhite2,
+        "offwhite3": $color-offwhite3,
+        "offwhite4": $color-offwhite4,
         "green": $color-green,
         "brown": $color-brown,
         "brown1": $color-brown1,
+        "lightbrown": $color-lightbrown,
         "grey1": $color-grey1,
         "grey4": $color-grey4,
         "lightpurple": $color-lightpurple,
+        "sand": $color-sand,
+        "sand1": $color-sand1,
     ),
     $theme-colors
 );

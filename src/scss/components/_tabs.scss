@@ -1,0 +1,13 @@
+.hc_light-tabs {
+    & .nav-tabs {
+        & .nav-item {
+            & .nav-link {
+                border: 0px;
+                font-size: 1.125rem;
+                &.active {
+                    color: $color-brown !important;
+                }
+            }
+        }
+    }
+}
